@@ -1,0 +1,20 @@
+<ion-header>
+  <app-header myTitle="Blog">
+    <ion-button color="light" slot="end" (click)="createBlog()">create</ion-button>
+  </app-header>
+</ion-header>
+<ion-content>
+  <ion-list *ngIf="blog$|async as blog" class="ion-no-padding">
+    <ion-item *ngFor="let item of blog.slice(0, maxArticles)" [routerLink]="item.id" class="ion-no-margin">
+      <ion-label class="ion-text-wrap">
+      <ion-text color="dark">
+        <h2>id: {{item.id}}</h2>
+      <h3>{{item.title}}</h3>
+      </ion-text>
+      <p>{{item.body}}</p>
+      </ion-label>
+      <ion-icon color="dark" name="arrow-forward-circle"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
